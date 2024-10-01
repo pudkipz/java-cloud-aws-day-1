@@ -1,4 +1,4 @@
-# JAVA Cloud AWS Day One
+# JAVA Cloud AWS - Day One
 
 ## Learning Objectives
 
