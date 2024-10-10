@@ -29,69 +29,21 @@
    - Note the "Endpoint" and "Port."
    - Configure the security group to allow access from your Elastic Beanstalk environment.
 
-3. **Update `appsettings.json`:**
-```json
-   "ConnectionStrings": {
-       "DefaultConnection": "Host=mydbinstance.endpoint;Database=mydatabase;Username=myadmin;Password=mypassword"
-   }
-```
+3. **Update `application.properties`:**
+
 4. **Add Required Packages:**
-   - Add Packages to Solution
-```bash
-dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
-dotnet add package Microsoft.EntityFrameworkCore.Tools
-```
 
-5. **Configure DbContext in Startup.cs:**
-   - Update `Startup.cs`
-```csharp
-services.AddDbContext<MyDbContext>(options =>
-    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-```
+5. **Configure Application to Accept DB Credentials:**
 
-6. **Create DB Context and Model:**
-   - Create own DB Context and model. Example Below
-```csharp
-public class MyModel
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-}
 
-public class MyDbContext : DbContext
-{
-    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
-
-    public DbSet<MyModel> MyModels { get; set; }
-}
-```
-
-7. **Apply Entity Framework Migrations:**
-   - To Run EntityFramework migration use the commands below
-```bash
-dotnet ef migrations add InitialCreate
-dotnet ef database update
-```
 
 1. **Build API and Compress**
-   - Publish the application:
-
-```bash
-dotnet publish -c Release -o out
-```
-
-- Compress the published files:
-
-```bash
-cd out
-zip -r MyApi.zip .
-```
 
 2. **Open the AWS Management Console:**
 
    - Navigate to the Elastic Beanstalk service.
    - Click "Create Application."
-   - Enter the application name (e.g., aws-day-1-{studentName}-api).
+   - Enter the application name (e.g., aws-java-day-1-{studentName}-api).
    - Description is Optional.
    - Click Create
 
@@ -100,7 +52,7 @@ zip -r MyApi.zip .
    - Follow the steps **EXACTLY**.
       1. ### Configure environment
          - Environment tier choose **Web Server environment**.
-         - Platform choose **.Net Core on Linux**.
+         - Platform choose **Java**.
          - Application Code pick **Upload your code**.
             - Then choose your local compress file.
             - Add your own version Label (e.g. v1, v1.1 etc).
@@ -114,9 +66,6 @@ zip -r MyApi.zip .
          - Root volume type **General Purpose 3(SSD)**.
          - Instance types remove **t3.small**. (Only **t3.micro** should be left.)
          - Click on **Skip to review**
-      3. ### Edit Step 5 (Optional to run Development environment)
-         - Environment properties Add a key value pair **ASPNETCORE_ENVIRONMENT: Development**.
-         - Click on **Next**
    - Click on **Submit**
 
 ## Deploy Frontend UI
