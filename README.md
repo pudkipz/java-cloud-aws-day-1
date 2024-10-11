@@ -29,17 +29,15 @@
    - Note the "Endpoint" and "Port."
    - Configure the security group to allow access from your Elastic Beanstalk environment.
 
-3. **Update `application.properties`:**
+3. **Build API and Compress**
+   - Open the Backend Projectin IntelliJ.
+   - Add the connection details to `application.yml`
+   - Change the Port number in `application.yml` to `5000`
+   - Initially test with a Neon DB then gradually move to use the RDS Database
+   - Run the command to build a Jar file as we did when building for Docker
+   - In the next steps when it asks for a local file to upload, use the Jar file you created  
 
-4. **Add Required Packages:**
-
-5. **Configure Application to Accept DB Credentials:**
-
-
-
-1. **Build API and Compress**
-
-2. **Open the AWS Management Console:**
+4. **Open the AWS Management Console:**
 
    - Navigate to the Elastic Beanstalk service.
    - Click "Create Application."
@@ -47,7 +45,7 @@
    - Description is Optional.
    - Click Create
 
-3. **Create and Environment for you Application**
+5. **Create and Environment for you Application**
    - Click on **Create new Environment**.
    - Follow the steps **EXACTLY**.
       1. ### Configure environment
@@ -124,5 +122,5 @@ json
    - Replace your-bucket-name with the name of your S3 bucket.
    - Click "Save".
 
-5. **Access the Static Site:**
+1. **Access the Static Site:**
    - After configuring static website hosting, note the "Bucket website endpoint" URL provided in the static website hosting section.
