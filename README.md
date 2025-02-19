@@ -1,5 +1,9 @@
 # JAVA Cloud AWS - Day One
 
+[My bucket](http://matildas-todo-bucket.s3-website-eu-west-1.amazonaws.com/)
+
+
+
 ## Learning Objectives
 
 - Understand how to deploy an API to AWS Elastic Beanstalk
